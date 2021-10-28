@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="dashSalario.css" />
+
+    <!-- Da acesso a lib através do cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <h1>Gráficos sobre salário mínimo</h1>
+      </div>
+    </div>
+
+    
+
+      <!-- Gráficos -->
+      <div class="graph">
+        <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
+      </div>
+
+      <div class="graph">
+        <canvas id="myChart2" style="width: 100%; height: 100%"></canvas>
+      </div>
+
+      <div class="graph">
+        <canvas id="myChart3" style="width: 100%; height: 100%"></canvas>
+      </div>
+    </div>
+  </body>
+
+</html>
+
+<script>
+ 
+  const salario = { 
+    type: "line", 
+    data: { 
+      labels: [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021], 
+      datasets: [ 
+        {
+          label: "Salário mínimo", 
+          data: [540.00, 622.00, 678.00, 724.00, 788.00, 880.00, 937.00, 954.00, 998.00, 1045.00, 1100.00],
+          backgroundColor: "#faf", 
+          borderColor: "#3F51B5" 
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false 
+     
+    }
+  }
+
+  var myChartLine = new Chart(document.getElementById("myChart"), salario); 
+ 
+
+  
+  const media = { 
+    type: "bar", 
+    data: { 
+      labels: ['Norte', 'Nordeste', 'Sudeste', 'Sul', 'Centro-Oeste'], 
+      datasets: [ 
+        {
+          label: "Média salarial entre as regiões", 
+          data: [1711.00, 1539.00, 2585.00, 2499.00, 2498.00],
+          backgroundColor: [
+              '#00BFFF',
+              '#20B2AA',
+              '#008000',
+              '#DAA520',
+              '#8B008B',
+          ], 
+          borderColor: "#000"
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false 
+     
+    }
+  }
+
+  var myChartLine2 = new Chart(document.getElementById("myChart2"), media); 
+ 
+
+  const desemprego = { 
+    type: "doughnut", 
+    data: { 
+      labels: ['Brasil(total)', 'Norte', 'Nordeste', 'Sudeste', 'Sul', 'Centro-Oeste'], 
+      datasets: [ 
+        {
+          label: "Desemprego por região", 
+          data: [11,10.6,13.6,11.4,6.8,9.3],
+          backgroundColor:[
+              '#00FF00',
+              '#1C1C1C',
+              '#8B4513',
+              '#4B0082',
+              '#DC143C',
+              '#800000',
+          ], 
+          borderColor: "#3F51B5" 
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false 
+     
+    }
+  }
+
+  var myChartLine3 = new Chart(document.getElementById("myChart3"), desemprego); 
+</script>
